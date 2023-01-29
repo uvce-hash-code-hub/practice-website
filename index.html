@@ -17,29 +17,6 @@
 			Problems
 		</div>
 
-		<input type="file" accept=".txt" id="file-ip">
-		<script>
-			function abc(text) {
-				alert(text);
-			}
-
-			function submit() {
-				file = document.getElementById('file-ip').files[0];
-
-				var str = "hello world";
-
-				var reader = new FileReader();
-
-				reader.onload = function() {
-					abc(reader.result);
-				}
-
-				reader.readAsText(file);
-			}
-		</script>
-		<input type="button" id="submit" value="click here" onclick="submit()">
-
-
 		<ul class="problem-list">
 			<li><a href="/problems/fest-scheduling">Fest Scheduling</a></li>
 			<li><a href="/problems/network-issue">Network Issue</a></li>
