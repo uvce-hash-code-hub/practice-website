@@ -1,0 +1,46 @@
+body {
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 50px;
+
+	font-family: verdana, sans-serif;
+}
+
+.title {
+	margin-top: 10px;
+	text-align: center;
+
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.subtitle {
+	margin-top: 50px;
+
+	font-weight: bold;
+}
+
+.problem-list li {
+	margin-top: 5px;
+}
+
+.footer {
+	margin-top: 200px;
+	margin-bottom: 50px;
+
+	text-align: center;
+}
+
+.footer-subtitle {
+	margin-bottom: 25px;
+
+	font-weight: bold;
+}
+
+.footer-element {
+	margin-top: 5px;
+}
+
+
+
+
