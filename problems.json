@@ -2,21 +2,21 @@
 	"fest-scheduling": {
 		"problem-name": "Fest Scheduling",
 		"number-of-inputs": 5,
-		"uvce-problem": true
+		"isuvce": true
 	},
 	"network-issue": {
 		"problem-name": "Network Issue",
 		"number-of-inputs": 5,
-		"uvce-problem": true
+		"isuvce": true
 	},
 	"cleanliness-drive": {
 		"problem-name": "Cleanliness Drive",
 		"number-of-inputs": 5,
-		"uvce-problem": true
+		"isuvce": true
 	},
 	"book-scanning-2020-qualification": {
 		"problem-name": "Book Scanning 2020 Qualification Round",
 		"number-of-inputs": 6,
-		"uvce-problem": false
+		"isuvce": false
 	}
 }

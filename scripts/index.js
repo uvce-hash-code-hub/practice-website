@@ -27,6 +27,8 @@ function init_cookie() {
 		document.cookie = cookie_content;
 	}
 
+	alert(document.cookie);
+
 	var cookie_content = 'problem-scores=';
 	var problems_and_scores = JSON.parse(document.cookie.split(';')[0].split('=')[1]);
 
@@ -73,9 +75,10 @@ function init() {
 	`;
 
 	for (problem in problems)
-		html_problem_list += `
-				<li><a href="/problems/fest-scheduling">${problems[problem]['problem-name']}</a></li>
-		`;
+		if (problem[problems]['isuvce'])
+			html_problem_list += `
+					<li><a href="/problems/${problem}">${problems[problem]['problem-name']}</a></li>
+			`;
 
 	html_problem_list += `
 			</ul>
@@ -88,9 +91,10 @@ function init() {
 	`;
 
 	for (problem in problems)
-		html_problem_list += `
-				<li><a href="/problems/fest-scheduling">${problems[problem]['problem-name']}</a></li>
-		`;
+		if (!problem[problems]['isuvce'])
+			html_problem_list += `
+					<li><a href="/problems/${problem}">${problems[problem]['problem-name']}</a></li>
+			`;
 
 	html_problem_list += `
 			</ul>
