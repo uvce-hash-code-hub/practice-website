@@ -11,11 +11,11 @@ function init_cookie() {
 		var problems_and_scores = {}
 
 		for (problem in problems) {
-			var n = problems[problem]['number-of-inputs'];
+			var number_of_inputs = problems[problem]['number-of-inputs'];
 			var scores = []
 
 			// Number of 0s appended is equal to the number of inputs for the problem
-			for (var i = 0; i < n; i++)
+			for (var i = 0; i < number_of_inputs; i++)
 				scores.push(0);
 
 			problems_and_scores[problem] = scores;
@@ -33,11 +33,11 @@ function init_cookie() {
 	for (problem in problems) {
 		// Check for problems whose score is not present in the cookie and initialize the cookie again
 		if (!(problem in problems_and_scores)) {
-			var n = problems[problem]['number-of-inputs'];
+			var number_of_inputs = problems[problem]['number-of-inputs'];
 			var scores = []
 
 			// Number of 0s appended is equal to the number of inputs for the problem
-			for (var i = 0; i < n; i++)
+			for (var i = 0; i < number_of_inputs; i++)
 				scores.push(0);
 
 			problems_and_scores[problem] = scores;
