@@ -27,14 +27,12 @@ function init_cookie() {
 		document.cookie = cookie_content;
 	}
 
-	alert(document.cookie);
-
 	var cookie_content = 'problem-scores=';
 	var problems_and_scores = JSON.parse(document.cookie.split(';')[0].split('=')[1]);
 
 	for (problem in problems) {
 		// Check for problems whose score is not present in the cookie and initialize the cookie again
-		if (!(problem in scores)) {
+		if (!(problem in problems_and_scores)) {
 			var n = problems[problem]['number-of-inputs'];
 			var scores = []
 
@@ -50,6 +48,7 @@ function init_cookie() {
 	cookie_content += "; expires=Tue, 31 Dec 2029 23:59:59 UTC";
 
 	document.cookie = cookie_content;
+	alert(document.cookie);
 }
 
 function init() {
