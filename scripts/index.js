@@ -48,7 +48,6 @@ function init_cookie() {
 	cookie_content += "; expires=Tue, 31 Dec 2029 23:59:59 UTC";
 
 	document.cookie = cookie_content;
-	alert(document.cookie);
 }
 
 function init() {
