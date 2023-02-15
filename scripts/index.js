@@ -75,7 +75,7 @@ function init() {
 	for (problem in problems)
 		if (problems[problem]['isuvce'])
 			html_problem_list += `
-					<li><a href="/problems/${problem}">${problems[problem]['problem-name']}</a></li>
+					<li><a href="problem.html?id=${problem}">${problems[problem]['problem-name']}</a></li>
 			`;
 
 	html_problem_list += `
@@ -91,7 +91,7 @@ function init() {
 	for (problem in problems)
 		if (!problems[problem]['isuvce'])
 			html_problem_list += `
-					<li><a href="/problems/${problem}">${problems[problem]['problem-name']}</a></li>
+					<li><a href="problem.html?id=${problem}">${problems[problem]['problem-name']}</a></li>
 			`;
 
 	html_problem_list += `
