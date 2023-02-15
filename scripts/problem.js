@@ -59,7 +59,7 @@ function init() {
 	var problems = JSON.parse(xmlHttp.responseText);
 
 	// Initialize the cookies to maintain best scores for each problem
-	//init_cookie();
+	init_cookie();
 
 	dynamic_content = '';
 
