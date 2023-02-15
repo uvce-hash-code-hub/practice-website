@@ -59,7 +59,7 @@ function init() {
 	var problems = JSON.parse(xmlHttp.responseText);
 
 	// Initialize the cookies to maintain best scores for each problem
-	init_cookie();
+	//init_cookie();
 
 	dynamic_content = '';
 
@@ -71,55 +71,55 @@ function init() {
 	}
 
 	dynamic_content += `
-	<div class="heading1">${problems[id]['problem-name']}</div>
-        <div id="container">
-            <div id="left-pane">
-                <table>
-                    <tr>
-                        <td>
-                            <strong>Downloads</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="problem-statements/${id}.pdf" download>Problem Statement</a>
-                        </td>
-                    </tr>
+		<div class="heading1">${problems[id]['problem-name']}</div>
+		    <div id="container">
+		        <div id="left-pane">
+		            <table>
+		                <tr>
+		                    <td>
+		                        <strong>Downloads</strong>
+		                    </td>
+		                </tr>
+		                <tr>
+		                    <td>
+		                        <a href="problem-statements/${id}.pdf" download>Problem Statement</a>
+		                    </td>
+		                </tr>
 	`
 
 	for (var i = 0; i < problems[id]['number-of-inputs']; i++)
 		dynamic_content += `
-			<tr>
-                <td>
-                    <a href="input-files/${id}/input-${String.fromCharCode(i+97)}.txt" download>Input ${String.fromCharCode(i+65)}</a>
-                </td>
-            </tr>
+						<tr>
+						    <td>
+						        <a href="input-files/${id}/input-${String.fromCharCode(i+97)}.txt" download>Input ${String.fromCharCode(i+65)}</a>
+						    </td>
+						</tr>
 		`
 
 	dynamic_content += `
-				</table>
-            </div>
+					</table>
+		        </div>
 
-            <div id="right-pane">
-                <form id="submission">
-                    <table>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><div>Points</div></td>
-                            <td><div>Best Points</div></td>
-                        </tr>
+		        <div id="right-pane">
+		            <form id="submission">
+		                <table>
+		                    <tr>
+		                        <td></td>
+		                        <td></td>
+		                        <td><div>Points</div></td>
+		                        <td><div>Best Points</div></td>
+		                    </tr>
 
 		`
 
 	for (var i = 0; i < problems[id]['number-of-inputs']; i++)
 		dynamic_content += `
-            <tr>
-                <td>Select file ${String.fromCharCode(i+65)}</td>
-                <td><input type="file" id="file${i+1}" name="file${i+1}" accept=".txt" /></td>
-                <td><div class="points" id="points-${i+1}">0</div></td>
-                <td><div class="points" id="best-points-${i+1}">0</div></td>
-            </tr>
+							<tr>
+								<td>Select file ${String.fromCharCode(i+65)}</td>
+								<td><input type="file" id="file${i+1}" name="file${i+1}" accept=".txt" /></td>
+								<td><div class="points" id="points-${i+1}">0</div></td>
+								<td><div class="points" id="best-points-${i+1}">0</div></td>
+							</tr>
 		`
 
 	dynamic_content += `
@@ -137,18 +137,27 @@ function init() {
 		                    </tr>
 		                </table>
 		            </form>
-		            <input type="submit" value="Submit" id="submit" onclick="make_submission('${id}')"/> <br>
+
+		            <input type="submit" value="Submit" id="submit" onclick="evaluate_problem('${id}')"/> <br>
 		        </div>
 		    </div>
-
-		    <script>
-		        init("${id}");
-		    </script>
-		</body>
-	</html>
+		</div>
 	`
 
 	document.getElementById('dynamic-content').innerHTML = dynamic_content;
+}
+
+function evaluate_problem(id) {
+	if (id == 'fest-scheduling')
+		fest_scheduling_evaluator();
+	else if (id == 'network-issue')
+		network_issue_evaluator();
+	else if (id == 'cleanliness-drive')
+		cleanliness_drive_evaluator();
+	else if (id == 'book-scanning-2020-qualification')
+		book_scanning_2020_qualification_evaluator();
+	else
+		alert('Problem not available');
 }
 
 
