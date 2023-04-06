@@ -99,7 +99,7 @@ function update_cookie(id, results) {
 			var scores = [];
 
 			for (var i = 0; i < number_of_inputs; i++)
-				scores.push(max(problems_and_scores[problem][i], results[i]['points']));
+				scores.push(Math.max(problems_and_scores[problem][i], results[i]['points']));
 
 			problems_and_scores[problem] = scores;
 		}
@@ -266,6 +266,7 @@ function evaluate_problem(id) {
 		}
 	}
 
+	alert(error_message);
 	update_cookie(id, results);
 	init();
 }
