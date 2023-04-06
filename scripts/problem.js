@@ -98,8 +98,12 @@ function update_cookie(id, results) {
 			var number_of_inputs = problems[problem]['number-of-inputs'];
 			var scores = [];
 
-			for (var i = 0; i < number_of_inputs; i++)
-				scores.push(Math.max(problems_and_scores[problem][i], results[i]['points']));
+			for (var i = 0; i < number_of_inputs; i++) {
+				if (results[i]['points'])
+					scores.push(Math.max(problems_and_scores[problem][i], results[i]['points']));
+				else
+					scores.push(problems_and_scores[problem][i]);
+			}
 
 			problems_and_scores[problem] = scores;
 		}
@@ -266,7 +270,9 @@ function evaluate_problem(id) {
 		}
 	}
 
-	alert(error_message);
+	if (error_message != '')
+		alert(error_message);
+
 	update_cookie(id, results);
 	init();
 }
