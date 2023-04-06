@@ -147,17 +147,55 @@ function init() {
 	document.getElementById('dynamic-content').innerHTML = dynamic_content;
 }
 
-function evaluate_problem(id) {
+function evaluate_score(id, input_content, output_content) {
 	if (id == 'fest-scheduling')
-		fest_scheduling_evaluator();
+		return fest_scheduling_evaluator(input_content, output_content);
 	else if (id == 'network-issue')
-		network_issue_evaluator();
+		return network_issue_evaluator(input_content, output_content);
 	else if (id == 'cleanliness-drive')
-		cleanliness_drive_evaluator();
+		return cleanliness_drive_evaluator(input_content, output_content);
 	else if (id == 'book-scanning-2020-qualification')
-		book_scanning_2020_qualification_evaluator();
+		return book_scanning_2020_qualification_evaluator(input_content, output_content);
 	else
 		alert('Problem not available');
+}
+
+function evaluate_problem(id) {
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("GET", 'https://uvce-hash-code-hub.github.io/practice-website/problems.json', false);
+	xmlHttp.send(null);
+
+	var problems = JSON.parse(xmlHttp.responseText);
+
+	var n = problems[id]['number-of-inputs'];
+
+	var files = [];
+	var file_readers = [];
+
+	for (let i = 0; i < n; i++) {
+		files[i] = document.getElementById(`file${i+1}`).files[0];
+		file_readers[i] = new FileReader();
+
+		if (files[i]) {
+			var input_file_url = `https://uvce-hash-code-hub.github.io/practice-website/input-files/${id}/input-${String.fromCharCode(i+97)}.txt`
+			var xmlHttpFileRequest = new XMLHttpRequest();
+			xmlHttpFileRequest.open("GET", input_file_url, false);
+			xmlHttpFileRequest.send(null);
+
+			var input_content = xmlHttpFileRequest.responseText;
+
+			file_readers[i].onload = function() {
+				var output_content = file_readers[i].result;
+
+				// Obtain the output score for the submission
+				result = evaluate_score(id, input_content, output_content);
+				alert(JSON.stringify(result));
+			}
+
+			file_readers[i].readAsText(files[i]);
+			document.getElementById(`file${i+1}`).value = "";
+		}
+	}
 }
 
 
