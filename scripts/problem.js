@@ -99,7 +99,7 @@ function update_cookie(id, results) {
 			var scores = [];
 
 			for (var i = 0; i < number_of_inputs; i++) {
-				if (results[i]['points'])
+				if (i in results && 'points' in results[i])
 					scores.push(Math.max(problems_and_scores[problem][i], results[i]['points']));
 				else
 					scores.push(problems_and_scores[problem][i]);
